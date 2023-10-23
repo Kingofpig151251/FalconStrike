@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -48,10 +49,10 @@ namespace FalconStrike
 
             if (random.NextDouble() < 0.005)
             {
-                var enemy = new Enemy(this,random);
+                var enemy = new Enemy(this, random);
                 Components.Add(enemy);
-                enemies.Add(enemy);
                 enemy.SetInitialPosition();
+                enemies.Add(enemy);
             }
 
             foreach (var enemy in enemies)
@@ -59,7 +60,7 @@ namespace FalconStrike
                 if (player.CheckCollision(enemy))
                 {
                     player.PlayerGetHit();
-                    enemy.EnemyGetHit(gameTime);
+                    // enemy.EnemyGetHit(gameTime);
                 }
 
                 base.Update(gameTime);
@@ -69,7 +70,6 @@ namespace FalconStrike
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             base.Draw(gameTime);
         }
     }

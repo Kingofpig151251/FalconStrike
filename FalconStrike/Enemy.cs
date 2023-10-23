@@ -13,13 +13,13 @@ namespace FalconStrike
         public Enemy(Game game,Random random) : base(game)
         {
             this.random = random;
-            velocity = new Vector2(2f, 2f);
+            velocity = new Vector2(0, 100f);
             maxTime = 2;
         }
 
         public void SetInitialPosition()
         {
-            position = new Vector2(random.Next(texture.Width, GraphicsDevice.Viewport.Width), -texture.Height);
+            position = new Vector2(random.Next(GraphicsDevice.Viewport.Width - frameBounds.Width), -texture.Height);
         }
 
         protected override void LoadContent()
@@ -33,6 +33,17 @@ namespace FalconStrike
 
         public override void Update(GameTime gameTime)
         {
+            if (!isPaused)
+            {
+                position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (position.Y > GraphicsDevice.Viewport.Height)
+                {
+                    position.X = random.Next(GraphicsDevice.Viewport.Width - frameBounds.Width);
+                    position.Y = -texture.Height;
+                }
+            }
+
             UpdateFrame(gameTime);
             base.Update(gameTime);
         }

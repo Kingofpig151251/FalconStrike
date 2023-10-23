@@ -6,6 +6,7 @@ namespace FalconStrike
 {
     public abstract class GameObject : DrawableGameComponent
     {
+        protected bool isPaused;
         protected Vector2 position, velocity;
         protected float rotation = 0;
 
@@ -35,7 +36,6 @@ namespace FalconStrike
 
         public override void Update(GameTime gameTime)
         {
-            UpdateFrame(gameTime);
             base.Update(gameTime);
         }
 
@@ -46,7 +46,6 @@ namespace FalconStrike
             spriteBatch.Begin();
             spriteBatch.Draw(texture, position, frameBounds, color, rotation, new Vector2(frameBounds.Width / 2, frameBounds.Height / 2), 1.0f, SpriteEffects.None, 0);
             spriteBatch.End();
-
             base.Draw(gameTime);
         }
 
@@ -70,7 +69,6 @@ namespace FalconStrike
                     }
                 }
             }
-
             return false;
         }
 
