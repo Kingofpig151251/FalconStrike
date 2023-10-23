@@ -11,7 +11,7 @@ namespace FalconStrike
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
+
         Player player;
         List<Enemy> enemies;
         Random random = new Random();
@@ -62,9 +62,8 @@ namespace FalconStrike
                     player.PlayerGetHit();
                     // enemy.EnemyGetHit(gameTime);
                 }
-
-                base.Update(gameTime);
             }
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
