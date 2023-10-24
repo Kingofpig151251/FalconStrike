@@ -10,7 +10,7 @@ namespace FalconStrike
     {
         private Random random;
 
-        public Enemy(Game game,Random random) : base(game)
+        public Enemy(Game game, Random random) : base(game)
         {
             this.random = random;
             velocity = new Vector2(0, 100f);
@@ -19,7 +19,8 @@ namespace FalconStrike
 
         public void SetInitialPosition()
         {
-            position = new Vector2(random.Next(GraphicsDevice.Viewport.Width - frameBounds.Width), -texture.Height);
+            position = new Vector2(random.Next(GraphicsDevice.Viewport.Width - texture.Width / 2) + texture.Width / 4,
+                -texture.Height / 2);
         }
 
         protected override void LoadContent()
@@ -46,16 +47,6 @@ namespace FalconStrike
 
             UpdateFrame(gameTime);
             base.Update(gameTime);
-        }
-        
-        public void EnemyGetHit(GameTime gameTime)
-        {   
-            texture = Game.Content.Load<Texture2D>("Explode");
-            elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
-            if (elapsedTime >= maxTime)
-            {
-                Game.Components.Remove(this);
-            }
         }
     }
 }

@@ -19,7 +19,8 @@ namespace FalconStrike
         protected override void LoadContent()
         {
             texture = Game.Content.Load<Texture2D>("Player");
-            frameBounds = new Rectangle(0,0, texture.Width / totalFrames, texture.Height);
+            frameBounds = new Rectangle(0, 0, texture.Width / totalFrames,
+                texture.Height);
             colorData = new Color[texture.Width * texture.Height];
             texture.GetData(colorData);
             base.LoadContent();
@@ -29,7 +30,7 @@ namespace FalconStrike
         {
             if (life == 0)
             {
-                Game.Exit();
+                // Game.Exit();
             }
 
             UpdateInvincibility(gameTime);
@@ -45,26 +46,30 @@ namespace FalconStrike
             if (state.IsKeyDown(Keys.Up))
             {
                 position.Y -= velocity.Y;
-                position.Y = MathHelper.Clamp(position.Y, 0, Game.GraphicsDevice.Viewport.Height - frameBounds.Height);
+                position.Y = MathHelper.Clamp(position.Y, frameBounds.Height / 2,
+                    Game.GraphicsDevice.Viewport.Height - frameBounds.Height / 2);
             }
 
             if (state.IsKeyDown(Keys.Down))
             {
                 position.Y += velocity.Y;
-                position.Y = MathHelper.Clamp(position.Y, 0, Game.GraphicsDevice.Viewport.Height - frameBounds.Height);
+                position.Y = MathHelper.Clamp(position.Y, frameBounds.Height / 2,
+                    Game.GraphicsDevice.Viewport.Height - frameBounds.Height / 2);
             }
 
             if (state.IsKeyDown(Keys.Left))
             {
                 position.X -= velocity.X;
-                position.X = MathHelper.Clamp(position.X, 0, Game.GraphicsDevice.Viewport.Width - frameBounds.Width);
+                position.X = MathHelper.Clamp(position.X, frameBounds.Width / 2,
+                    Game.GraphicsDevice.Viewport.Width - frameBounds.Width / 2);
                 rotation = -(float)(Math.PI / 8);
             }
 
             if (state.IsKeyDown(Keys.Right))
             {
                 position.X += velocity.X;
-                position.X = MathHelper.Clamp(position.X, 0, Game.GraphicsDevice.Viewport.Width - frameBounds.Width);
+                position.X = MathHelper.Clamp(position.X, frameBounds.Width / 2,
+                    Game.GraphicsDevice.Viewport.Width - frameBounds.Width / 2);
                 rotation = (float)(Math.PI / 8);
             }
 
@@ -92,7 +97,8 @@ namespace FalconStrike
             if (!isInvincible)
             {
                 isInvincible = true;
-                position = new Vector2(Game.GraphicsDevice.Viewport.Width / 2, Game.GraphicsDevice.Viewport.Height * 0.8f);
+                position = new Vector2(Game.GraphicsDevice.Viewport.Width / 2,
+                    Game.GraphicsDevice.Viewport.Height * 0.8f);
                 life--;
             }
         }

@@ -42,9 +42,12 @@ namespace FalconStrike
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch spriteBatch = Game.Services.GetService<SpriteBatch>();
-            Color color = isInvincible && (int)(gameTime.TotalGameTime.TotalSeconds * 10) % 2 == 0 ? Color.Transparent : Color.White;
+            Color color = isInvincible && (int)(gameTime.TotalGameTime.TotalSeconds * 10) % 2 == 0
+                ? Color.Transparent
+                : Color.White;
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, position, frameBounds, color, rotation, new Vector2(frameBounds.Width / 2, frameBounds.Height / 2), 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, position, frameBounds, color, rotation,
+                new Vector2(frameBounds.Width / 2, frameBounds.Height / 2), 1.0f, SpriteEffects.None, 0);
             spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -59,8 +62,10 @@ namespace FalconStrike
                 {
                     for (int x = intersect.Left; x < intersect.Right; x++)
                     {
-                        Color colorA = this.colorData[(x - this.Bounds.Left) + (y - this.Bounds.Top) * this.texture.Width];
-                        Color colorB = other.colorData[(x - other.Bounds.Left) + (y - other.Bounds.Top) * other.texture.Width];
+                        Color colorA =
+                            this.colorData[(x - this.Bounds.Left) + (y - this.Bounds.Top) * this.texture.Width];
+                        Color colorB =
+                            other.colorData[(x - other.Bounds.Left) + (y - other.Bounds.Top) * other.texture.Width];
 
                         if (colorA.A != 0 && colorB.A != 0)
                         {
@@ -69,8 +74,10 @@ namespace FalconStrike
                     }
                 }
             }
+
             return false;
         }
+
 
         public void UpdateFrame(GameTime gameTime)
         {

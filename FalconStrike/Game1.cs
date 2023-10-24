@@ -44,7 +44,8 @@ namespace FalconStrike
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             if (random.NextDouble() < 0.005)
@@ -60,9 +61,9 @@ namespace FalconStrike
                 if (player.CheckCollision(enemy))
                 {
                     player.PlayerGetHit();
-                    // enemy.EnemyGetHit(gameTime);
                 }
             }
+
             base.Update(gameTime);
         }
 
