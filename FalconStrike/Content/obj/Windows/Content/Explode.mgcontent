@@ -3,11 +3,11 @@
   <SourceFile>C:/Users/cwitstudent/Documents/GitHub/FalconStrike/FalconStrike/Content/Explode.png</SourceFile>
   <SourceTime>2023-10-24T08:37:55.8118953+08:00</SourceTime>
   <DestFile>C:/Users/cwitstudent/Documents/GitHub/FalconStrike/FalconStrike/Content/bin/Windows/Content/Explode.xnb</DestFile>
-  <DestTime>2023-10-24T08:49:39.5757292+08:00</DestTime>
+  <DestTime>2023-10-24T13:32:13.7568065+08:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2018-12-09T00:35:54+08:00</ImporterTime>
+  <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2018-12-09T00:35:54+08:00</ProcessorTime>
+  <ProcessorTime>2018-09-24T05:55:52+08:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

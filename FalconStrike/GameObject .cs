@@ -7,7 +7,9 @@ namespace FalconStrike
     public abstract class GameObject : DrawableGameComponent
     {
         protected bool isPaused;
-        protected Vector2 position, velocity;
+        protected bool isHit;
+        public Vector2 position;
+        protected Vector2 velocity;
         protected float rotation = 0;
 
         protected bool isInvincible;

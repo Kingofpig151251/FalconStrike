@@ -48,7 +48,7 @@ namespace FalconStrike
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (random.NextDouble() < 0.005)
+            if (random.NextDouble() < 1)
             {
                 var enemy = new Enemy(this, random);
                 Components.Add(enemy);
@@ -61,6 +61,13 @@ namespace FalconStrike
                 if (player.CheckCollision(enemy))
                 {
                     player.PlayerGetHit();
+                    var explode = new Explode(this, enemy)
+                    {
+                        position = enemy.position
+                    };
+                    Components.Add(explode);
+                    Components.Remove(enemy);
+                    enemies.Remove(enemy);
                 }
             }
 

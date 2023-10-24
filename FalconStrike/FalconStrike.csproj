@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enemy.cs" />
+    <Compile Include="Explode.cs" />
     <Compile Include="GameObject .cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Player.cs" />

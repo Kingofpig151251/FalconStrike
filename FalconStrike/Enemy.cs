@@ -1,8 +1,6 @@
 using System;
-using System.Management.Instrumentation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace FalconStrike
 {
@@ -13,14 +11,6 @@ namespace FalconStrike
         public Enemy(Game game, Random random) : base(game)
         {
             this.random = random;
-            velocity = new Vector2(0, 100f);
-            maxTime = 2;
-        }
-
-        public void SetInitialPosition()
-        {
-            position = new Vector2(random.Next(GraphicsDevice.Viewport.Width - texture.Width / 2) + texture.Width / 4,
-                -texture.Height / 2);
         }
 
         protected override void LoadContent()
@@ -47,6 +37,12 @@ namespace FalconStrike
 
             UpdateFrame(gameTime);
             base.Update(gameTime);
+        }
+
+        public void SetInitialPosition()
+        {
+            position = new Vector2(random.Next(GraphicsDevice.Viewport.Width - texture.Width / 2) + texture.Width / 4,
+                -texture.Height / 2);
         }
     }
 }
