@@ -26,8 +26,8 @@ namespace FalconStrike
         protected override void LoadContent()
         {
             CurrentTexture = textureWater = Game.Content.Load<Texture2D>("Water");
-            textureDesert = Game.Content.Load<Texture2D>("Desert");
-            textureBase = Game.Content.Load<Texture2D>("Base");
+            // textureDesert = Game.Content.Load<Texture2D>("Desert");
+            // textureBase = Game.Content.Load<Texture2D>("Base");
 
             // Calculate the number of tiles needed to fill the screen
             int tilesX = GraphicsDevice.Viewport.Width / CurrentTexture.Width + 1;
