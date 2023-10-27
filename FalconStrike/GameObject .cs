@@ -6,13 +6,13 @@ namespace FalconStrike
 {
     public abstract class GameObject : DrawableGameComponent
     {
-        protected bool isPaused;
-        protected bool isHit;
+        protected Game Game1;
+        protected bool isPaused=true;
         public Vector2 position;
         protected Vector2 velocity;
         protected float rotation = 0;
 
-        protected bool isInvincible;
+        public bool isInvincible;
         protected double elapsedTime;
         protected double maxTime;
 
@@ -32,13 +32,17 @@ namespace FalconStrike
 
         protected GameObject(Game game) : base(game)
         {
+            this.Game1 = game;
             totalFrames = 3;
             frameTimeStep = 0.3;
         }
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            if (!isPaused)
+            {
+                base.Update(gameTime);
+            }
         }
 
         public override void Draw(GameTime gameTime)

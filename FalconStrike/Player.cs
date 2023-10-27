@@ -7,10 +7,20 @@ namespace FalconStrike
 {
     public class Player : GameObject
     {
+        private Game1 game1;
         private int life = 3;
+        private KeyboardState previousState;
 
-        public Player(Game game) : base(game)
+        // Add a variable to store the time since last bullet fired
+        private double timeSinceLastBullet;
+
+        // Add a variable to store the bullet firing interval (in seconds)
+        private double bulletInterval = 0.5;
+
+        public Player(Game game, Game1 game1) : base(game)
         {
+            this.game1 = game1;
+            game1.OnPlayerGotHit += HandleOnPlayerGotHit;
             position = new Vector2(game.GraphicsDevice.Viewport.Width / 2, game.GraphicsDevice.Viewport.Height * 0.8f);
             velocity = new Vector2(2f, 2f);
             maxTime = 3;
@@ -30,17 +40,19 @@ namespace FalconStrike
         {
             if (life == 0)
             {
-                // Game.Exit();
+                game1.GameOver();
             }
 
             UpdateInvincibility(gameTime);
-            HandleInput();
+            HandleInput(gameTime);
             UpdateFrame(gameTime);
             base.Update(gameTime);
         }
 
-        public void HandleInput()
+        public void HandleInput(GameTime gameTime)
         {
+            timeSinceLastBullet += gameTime.ElapsedGameTime.TotalSeconds;
+
             KeyboardState state = Keyboard.GetState();
 
             if (state.IsKeyDown(Keys.Up))
@@ -77,6 +89,16 @@ namespace FalconStrike
             {
                 rotation = 0;
             }
+
+            if (state.IsKeyDown(Keys.Space) && previousState.IsKeyUp(Keys.Space) && timeSinceLastBullet >= bulletInterval)
+            {
+                timeSinceLastBullet = 0;
+                Bullet bullet = new Bullet(Game, game1, this.position);
+                Game.Components.Add(bullet);
+                ((Game1)Game).bullets.Add(bullet);
+            }
+
+            previousState = state;
         }
 
         public void UpdateInvincibility(GameTime gameTime)
@@ -92,11 +114,13 @@ namespace FalconStrike
             }
         }
 
-        public void PlayerGetHit()
+        private void HandleOnPlayerGotHit(GameObject enemy)
         {
             if (!isInvincible)
             {
                 isInvincible = true;
+                var explode = new Explode(Game, this);
+                Game.Components.Add(explode);
                 position = new Vector2(Game.GraphicsDevice.Viewport.Width / 2,
                     Game.GraphicsDevice.Viewport.Height * 0.8f);
                 life--;

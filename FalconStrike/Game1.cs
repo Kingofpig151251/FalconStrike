@@ -11,10 +11,17 @@ namespace FalconStrike
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        public Random random = new Random();
+        private ScrollingBackground scrollingBackground;
+        public Level CurrentLevel { get; private set; }
 
-        Player player;
-        List<Enemy> enemies;
-        Random random = new Random();
+        private Player player;
+        private HashSet<Enemy> enemies = new HashSet<Enemy>();
+        public HashSet<Enemy> enemiesToRemove = new HashSet<Enemy>();
+        public HashSet<Bullet> bullets = new HashSet<Bullet>();
+        public HashSet<Bullet> bulletsToRemove = new HashSet<Bullet>();
+        public event Action<Enemy> OnPlayerGotHit;
+        public event Action<Bullet, Enemy> OnEnemyGotHit;
 
         public Game1()
         {
@@ -26,9 +33,11 @@ namespace FalconStrike
 
         protected override void Initialize()
         {
-            player = new Player(this);
+            scrollingBackground = new ScrollingBackground(this, spriteBatch);
+            CurrentLevel = Level.WaterLevel;
+            Components.Add(scrollingBackground);
+            player = new Player(this, this);
             Components.Add(player);
-            enemies = new List<Enemy>();
             base.Initialize();
         }
 
@@ -48,9 +57,9 @@ namespace FalconStrike
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (random.NextDouble() < 1)
+            if (random.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 0.5)
             {
-                var enemy = new Enemy(this, random);
+                var enemy = new Enemy(this, this);
                 Components.Add(enemy);
                 enemy.SetInitialPosition();
                 enemies.Add(enemy);
@@ -58,17 +67,31 @@ namespace FalconStrike
 
             foreach (var enemy in enemies)
             {
-                if (player.CheckCollision(enemy))
+                if (player.CheckCollision(enemy) && player.isInvincible == false)
                 {
-                    player.PlayerGetHit();
-                    var explode = new Explode(this, enemy)
-                    {
-                        position = enemy.position
-                    };
-                    Components.Add(explode);
-                    Components.Remove(enemy);
-                    enemies.Remove(enemy);
+                    OnPlayerGotHit?.Invoke(enemy);
                 }
+
+                foreach (var bullet in bullets)
+                {
+                    if (bullet.CheckCollision(enemy) && enemy.position.Y > 0)
+                    {
+                        OnEnemyGotHit?.Invoke(bullet, enemy);
+                        bulletsToRemove.Add(bullet);
+                    }
+                }
+            }
+
+            foreach (var enemy in enemiesToRemove)
+            {
+                Components.Remove(enemy);
+                enemies.Remove(enemy);
+            }
+
+            foreach (var bullet in bulletsToRemove)
+            {
+                Components.Remove(bullet);
+                bullets.Remove(bullet);
             }
 
             base.Update(gameTime);
@@ -78,6 +101,16 @@ namespace FalconStrike
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(gameTime);
+        }
+
+        public void ChangeLevel(Level level)
+        {
+            CurrentLevel = level;
+            scrollingBackground.ChangeTexture(CurrentLevel);
+        }
+
+        public void GameOver()
+        {
         }
     }
 }
