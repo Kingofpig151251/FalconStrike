@@ -8,14 +8,14 @@ namespace FalconStrike
     public class Player : GameObject
     {
         private Game1 game1;
-        private int life = 3;
+        public int life = 3;
         private KeyboardState previousState;
 
         // Add a variable to store the time since last bullet fired
         private double timeSinceLastBullet;
 
         // Add a variable to store the bullet firing interval (in seconds)
-        private double bulletInterval = 0.5;
+        public double bulletInterval = 1;
 
         public Player(Game game, Game1 game1) : base(game)
         {
@@ -28,7 +28,7 @@ namespace FalconStrike
 
         protected override void LoadContent()
         {
-            texture = Game.Content.Load<Texture2D>("Player");
+            texture = Game.Content.Load<Texture2D>("image\\Player");
             frameBounds = new Rectangle(0, 0, texture.Width / totalFrames,
                 texture.Height);
             colorData = new Color[texture.Width * texture.Height];
@@ -38,14 +38,18 @@ namespace FalconStrike
 
         public override void Update(GameTime gameTime)
         {
-            if (life == 0)
+            if (!game1.isPaused)
             {
-                game1.GameOver();
+                if (life == 0)
+                {
+                    game1.GameOver();
+                }
+
+                UpdateInvincibility(gameTime);
+                HandleInput(gameTime);
+                UpdateFrame(gameTime);
             }
 
-            UpdateInvincibility(gameTime);
-            HandleInput(gameTime);
-            UpdateFrame(gameTime);
             base.Update(gameTime);
         }
 
@@ -93,7 +97,7 @@ namespace FalconStrike
             if (state.IsKeyDown(Keys.Space) && previousState.IsKeyUp(Keys.Space) && timeSinceLastBullet >= bulletInterval)
             {
                 timeSinceLastBullet = 0;
-                Bullet bullet = new Bullet(Game, game1, this.position);
+                Bullet bullet = new Bullet(Game, game1, this);
                 Game.Components.Add(bullet);
                 ((Game1)Game).bullets.Add(bullet);
             }

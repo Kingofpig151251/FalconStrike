@@ -14,7 +14,7 @@ namespace FalconStrike
 
         protected override void LoadContent()
         {
-            texture = Game.Content.Load<Texture2D>("Explode");
+            texture = Game.Content.Load<Texture2D>("image\\Explode");
             frameBounds = new Rectangle(0, 0, texture.Width / totalFrames, texture.Height);
             colorData = new Color[texture.Width * texture.Height];
             texture.GetData(colorData);

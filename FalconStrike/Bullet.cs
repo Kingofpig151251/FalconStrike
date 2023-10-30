@@ -5,17 +5,20 @@ namespace FalconStrike
 {
     public class Bullet : GameObject
     {
-        public Bullet(Game game, Game1 game1, Vector2 position) : base(game)
+        Game1 game1;
+
+        public Bullet(Game game, Game1 game1, GameObject player) : base(game)
         {
-            this.position = position;
-            this.velocity = new Vector2(0, 200);
+            this.position = new Vector2(player.position.X, player.position.Y - player.texture.Height / 2);
+            this.velocity = new Vector2(0, 150);
+            this.game1 = game1;
             game1.OnEnemyGotHit += HandleOnEnemyGotHit;
         }
 
 
         protected override void LoadContent()
         {
-            texture = Game.Content.Load<Texture2D>("Bullet");
+            texture = Game.Content.Load<Texture2D>("image\\Bullet");
             frameBounds = new Rectangle(0, 0, texture.Width / totalFrames, texture.Height);
             colorData = new Color[texture.Width * texture.Height];
             texture.GetData(colorData);
@@ -24,7 +27,7 @@ namespace FalconStrike
 
         public override void Update(GameTime gameTime)
         {
-            if (!isPaused)
+            if (!game1.isPaused)
             {
                 position.Y -= velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (this.position.Y - texture.Height / 2 < 0)
@@ -32,10 +35,10 @@ namespace FalconStrike
                     Game.Components.Remove(this);
                     return;
                 }
-
                 UpdateFrame(gameTime);
-                base.Update(gameTime);
             }
+
+            base.Update(gameTime);
         }
 
         private void HandleOnEnemyGotHit(Bullet bullet, Enemy enemy)
