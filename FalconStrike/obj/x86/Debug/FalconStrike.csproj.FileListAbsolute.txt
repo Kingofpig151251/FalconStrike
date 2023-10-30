@@ -106,3 +106,5 @@ C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\Falc
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\FalconStrike.csproj.CopyComplete
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\FalconStrike.exe
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\FalconStrike.pdb
+C:\Users\cwitstudent\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Bullet.xnb
+C:\Users\cwitstudent\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Water.xnb

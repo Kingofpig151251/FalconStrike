@@ -12,6 +12,7 @@ namespace FalconStrike
         protected Vector2 velocity;
         protected float rotation = 0;
 
+        public bool isAwake = false;
         public bool isInvincible;
         protected double elapsedTime;
         protected double maxTime;
@@ -60,24 +61,21 @@ namespace FalconStrike
 
         public bool CheckCollision(GameObject other)
         {
-            if (this.Bounds.Intersects(other.Bounds))
+            if (!this.Bounds.Intersects(other.Bounds))
+                return false;
+
+            Rectangle intersect = Rectangle.Intersect(this.Bounds, other.Bounds);
+            for (int y = intersect.Top; y < intersect.Bottom; y++)
             {
-                Rectangle intersect = Rectangle.Intersect(this.Bounds, other.Bounds);
-
-                for (int y = intersect.Top; y < intersect.Bottom; y++)
+                for (int x = intersect.Left; x < intersect.Right; x++)
                 {
-                    for (int x = intersect.Left; x < intersect.Right; x++)
-                    {
-                        Color colorA =
-                            this.colorData[(x - this.Bounds.Left) + (y - this.Bounds.Top) * this.texture.Width];
-                        Color colorB =
-                            other.colorData[(x - other.Bounds.Left) + (y - other.Bounds.Top) * other.texture.Width];
+                    Color colorA = this.colorData[(x - this.Bounds.Left) + 
+                                                  (y - this.Bounds.Top) * this.Bounds.Width];
+                    Color colorB = other.colorData[(x - other.Bounds.Left) + 
+                                                   (y - other.Bounds.Top) * other.Bounds.Width];
 
-                        if (colorA.A != 0 && colorB.A != 0)
-                        {
-                            return true;
-                        }
-                    }
+                    if (colorA.A != 0 && colorB.A != 0)
+                        return true;
                 }
             }
 

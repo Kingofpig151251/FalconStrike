@@ -16,7 +16,7 @@ namespace FalconStrike
         public Level CurrentLevel { get; private set; }
 
         private Player player;
-        private HashSet<Enemy> enemies = new HashSet<Enemy>();
+        private Enemy [] enemies = new Enemy[15];
         public HashSet<Enemy> enemiesToRemove = new HashSet<Enemy>();
         public HashSet<Bullet> bullets = new HashSet<Bullet>();
         public HashSet<Bullet> bulletsToRemove = new HashSet<Bullet>();
@@ -74,7 +74,10 @@ namespace FalconStrike
 
                 foreach (var bullet in bullets)
                 {
-                    if (bullet.CheckCollision(enemy) && enemy.position.Y > 0)
+                    if (bullet.position.Y < 0)
+                        continue;
+
+                    if (bullet.CheckCollision(enemy))
                     {
                         OnEnemyGotHit?.Invoke(bullet, enemy);
                         bulletsToRemove.Add(bullet);

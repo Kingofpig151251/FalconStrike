@@ -4,11 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/Bullet.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/Enemy.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/Explode.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/Player.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/Water.png</File>
+    <File>C:/Users/cwitstudent/Documents/GitHub/FalconStrike/FalconStrike/Content/Bullet.png</File>
+    <File>C:/Users/cwitstudent/Documents/GitHub/FalconStrike/FalconStrike/Content/Enemy.png</File>
+    <File>C:/Users/cwitstudent/Documents/GitHub/FalconStrike/FalconStrike/Content/Explode.png</File>
+    <File>C:/Users/cwitstudent/Documents/GitHub/FalconStrike/FalconStrike/Content/Player.png</File>
+    <File>C:/Users/cwitstudent/Documents/GitHub/FalconStrike/FalconStrike/Content/Water.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
