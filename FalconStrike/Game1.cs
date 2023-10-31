@@ -18,10 +18,8 @@ namespace FalconStrike
         public int score = 0, timer = 30;
 
         private Player player;
-        private HashSet<Enemy> enemies = new HashSet<Enemy>();
-        public HashSet<Enemy> enemiesToRemove = new HashSet<Enemy>();
-        public HashSet<Bullet> bullets = new HashSet<Bullet>();
-        public HashSet<Bullet> bulletsToRemove = new HashSet<Bullet>();
+        private Enemy[] enemies = new Enemy[15];
+        public Bullet[] bullets = new Bullet[20];
         private KeyboardState previousState;
         private double elapsedTime = 0;
 
@@ -55,6 +53,16 @@ namespace FalconStrike
             font = Content.Load<SpriteFont>("MyFont");
             player = new Player(this, this);
             Components.Add(player);
+            foreach (var enemy in enemies)
+            {
+                Components.Add(enemy);
+            }
+
+            foreach (var bullet in bullets)
+            {
+                Components.Add(bullet);
+            }
+
             base.Initialize();
         }
 
@@ -86,7 +94,9 @@ namespace FalconStrike
             {
                 if (random.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 0.5)
                 {
-                    AddEnemy();
+                    foreach (var enemy in enemies)
+                    {
+                    }
                 }
 
                 foreach (var enemy in enemies)
@@ -96,27 +106,15 @@ namespace FalconStrike
                         if (bullet.CollidesWith(enemy) && enemy.position.Y > enemy.texture.Height)
                         {
                             OnEnemyGotHit?.Invoke(bullet, enemy);
-                            bulletsToRemove.Add(bullet);
                         }
                     }
 
-                    if (player.CollidesWith(enemy) && player.isInvincible == false)
+                    if (player.CollidesWith(enemy) && player.isInvincible == false&& enemy.isActivate==true)
                     {
                         OnPlayerGotHit?.Invoke(enemy);
                     }
                 }
 
-                foreach (var enemy in enemiesToRemove)
-                {
-                    Components.Remove(enemy);
-                    enemies.Remove(enemy);
-                }
-
-                foreach (var bullet in bulletsToRemove)
-                {
-                    Components.Remove(bullet);
-                    bullets.Remove(bullet);
-                }
 
                 if (!isGameOver || !isPaused)
                 {
@@ -139,12 +137,18 @@ namespace FalconStrike
             spriteBatch.Begin();
             int lineHeight = 20;
             int baseLine = GraphicsDevice.Viewport.Height / 20;
-            spriteBatch.DrawString(font, "Score: " + score, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine), Color.Red);
-            spriteBatch.DrawString(font, "Time: " + timer, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight), Color.Red);
-            spriteBatch.DrawString(font, "Life:" + player.life, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 2), Color.Red);
-            spriteBatch.DrawString(font, "Fire Rate: " + (10 - Math.Round(player.bulletInterval, 1) * 10), new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 3), Color.Red);
+            spriteBatch.DrawString(font, "Score: " + score, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine),
+                Color.Red);
+            spriteBatch.DrawString(font, "Time: " + timer,
+                new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight), Color.Red);
+            spriteBatch.DrawString(font, "Life:" + player.life,
+                new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 2), Color.Red);
+            spriteBatch.DrawString(font, "Fire Rate: " + (10 - Math.Round(player.bulletInterval, 1) * 10),
+                new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 3), Color.Red);
 
-            if (isGameOver) spriteBatch.DrawString(font, "Game Over", new Vector2(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2), Color.Red);
+            if (isGameOver)
+                spriteBatch.DrawString(font, "Game Over",
+                    new Vector2(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2), Color.Red);
             if (isPaused)
             {
                 string text1 = "Next Level!";
@@ -153,8 +157,10 @@ namespace FalconStrike
                 Vector2 text1Size = font.MeasureString(text1);
                 Vector2 text2Size = font.MeasureString(text2);
 
-                Vector2 text1Position = new Vector2((GraphicsDevice.Viewport.Width - text1Size.X) / 2, (GraphicsDevice.Viewport.Height - text1Size.Y) / 2);
-                Vector2 text2Position = new Vector2((GraphicsDevice.Viewport.Width - text2Size.X) / 2, (GraphicsDevice.Viewport.Height + text1Size.Y) / 2);
+                Vector2 text1Position = new Vector2((GraphicsDevice.Viewport.Width - text1Size.X) / 2,
+                    (GraphicsDevice.Viewport.Height - text1Size.Y) / 2);
+                Vector2 text2Position = new Vector2((GraphicsDevice.Viewport.Width - text2Size.X) / 2,
+                    (GraphicsDevice.Viewport.Height + text1Size.Y) / 2);
 
                 spriteBatch.DrawString(font, text1, text1Position, Color.Red);
                 spriteBatch.DrawString(font, text2, text2Position, Color.Red);
@@ -181,13 +187,6 @@ namespace FalconStrike
             }
         }
 
-        private void AddEnemy()
-        {
-            var enemy = new Enemy(this, this);
-            Components.Add(enemy);
-            enemy.SetInitialPosition();
-            enemies.Add(enemy);
-        }
 
         public void GameOver()
         {

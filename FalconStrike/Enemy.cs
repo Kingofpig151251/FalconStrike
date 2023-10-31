@@ -53,14 +53,12 @@ namespace FalconStrike
         {
             var explode = new Explode(Game, enemy);
             Game.Components.Add(explode);
-            ((Game1)Game).enemiesToRemove.Add(enemy);
         }
 
         private void HandleOnEnemyGotHit(Bullet bullet, Enemy enemy)
         {
             var explode = new Explode(Game, enemy);
             Game.Components.Add(explode);
-            ((Game1)Game).enemiesToRemove.Add(enemy);
         }
     }
 }
