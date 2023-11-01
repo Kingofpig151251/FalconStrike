@@ -4,14 +4,14 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/File.spritefont</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Base.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Bullet.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Desert.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Enemy.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Explode.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Player.png</File>
-    <File>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Water.png</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/File.spritefont</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Base.png</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Bullet.png</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Desert.png</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Enemy.png</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Explode.png</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Player.png</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Water.png</File>
   </SourceFiles>
   <DestFiles>
     <File>MyFont.spritefont</File>

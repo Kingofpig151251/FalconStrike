@@ -21,10 +21,9 @@ namespace FalconStrike
         {
             this.game1 = game1;
             game1.OnPlayerGotHit += HandleOnPlayerGotHit;
-            this.isActivate = true;
-            maxTime = 3;
             position = new Vector2(game.GraphicsDevice.Viewport.Width / 2, game.GraphicsDevice.Viewport.Height * 0.8f);
             velocity = new Vector2(2f, 2f);
+            maxTime = 3;
         }
 
         protected override void LoadContent()
@@ -95,10 +94,12 @@ namespace FalconStrike
                 rotation = 0;
             }
 
-            if (state.IsKeyDown(Keys.Space) && previousState.IsKeyUp(Keys.Space) &&
-                timeSinceLastBullet >= bulletInterval)
+            if (state.IsKeyDown(Keys.Space) && previousState.IsKeyUp(Keys.Space) && timeSinceLastBullet >= bulletInterval)
             {
                 timeSinceLastBullet = 0;
+                Bullet bullet = new Bullet(Game, game1, this);
+                Game.Components.Add(bullet);
+                ((Game1)Game).bullets.Add(bullet);
             }
 
             previousState = state;

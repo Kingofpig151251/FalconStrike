@@ -11,7 +11,6 @@ namespace FalconStrike
         protected Vector2 velocity;
         protected float rotation = 0;
 
-        public bool isActivate=false;
         public bool isInvincible;
         protected double elapsedTime;
         protected double maxTime;
@@ -57,9 +56,8 @@ namespace FalconStrike
                 ? Color.Transparent
                 : Color.White;
             spriteBatch.Begin();
-            if (isActivate)
-                spriteBatch.Draw(texture, position, frameBounds, color, rotation,
-                    new Vector2(frameBounds.Width / 2, frameBounds.Height / 2), 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, position, frameBounds, color, rotation,
+                new Vector2(frameBounds.Width / 2, frameBounds.Height / 2), 1.0f, SpriteEffects.None, 0);
             spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -74,15 +72,12 @@ namespace FalconStrike
                 Rectangle intersect = Rectangle.Intersect(this.TransformedBounds, other.TransformedBounds);
 
                 // Calculate the transformation matrices of the two objects
-                Matrix transformA =
-                    Matrix.CreateTranslation(new Vector3(-frameBounds.Width / 2, -frameBounds.Height / 2, 0.0f)) *
-                    Matrix.CreateRotationZ(rotation) *
-                    Matrix.CreateTranslation(new Vector3(position, 0.0f));
-                Matrix transformB =
-                    Matrix.CreateTranslation(new Vector3(-other.frameBounds.Width / 2, -other.frameBounds.Height / 2,
-                        0.0f)) *
-                    Matrix.CreateRotationZ(other.rotation) *
-                    Matrix.CreateTranslation(new Vector3(other.position, 0.0f));
+                Matrix transformA = Matrix.CreateTranslation(new Vector3(-frameBounds.Width / 2, -frameBounds.Height / 2, 0.0f)) *
+                                    Matrix.CreateRotationZ(rotation) *
+                                    Matrix.CreateTranslation(new Vector3(position, 0.0f));
+                Matrix transformB = Matrix.CreateTranslation(new Vector3(-other.frameBounds.Width / 2, -other.frameBounds.Height / 2, 0.0f)) *
+                                    Matrix.CreateRotationZ(other.rotation) *
+                                    Matrix.CreateTranslation(new Vector3(other.position, 0.0f));
 
                 // Loop through the pixels in the intersection rectangle
                 for (int y = intersect.Top; y < intersect.Bottom; y++)

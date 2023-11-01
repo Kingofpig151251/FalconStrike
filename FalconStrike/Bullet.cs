@@ -9,6 +9,8 @@ namespace FalconStrike
 
         public Bullet(Game game, Game1 game1, GameObject player) : base(game)
         {
+            this.position = new Vector2(player.position.X, player.position.Y - player.texture.Height / 2);
+            this.velocity = new Vector2(0, 150);
             this.game1 = game1;
             game1.OnEnemyGotHit += HandleOnEnemyGotHit;
         }
@@ -30,26 +32,18 @@ namespace FalconStrike
                 position.Y -= velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (this.position.Y - texture.Height / 2 < 0)
                 {
-                    ResetThis();
+                    Game.Components.Remove(this);
                     return;
                 }
-
                 UpdateFrame(gameTime);
             }
 
             base.Update(gameTime);
         }
 
-        private void ResetThis()
-        {
-            this.isActivate = false;
-            this.position = new Vector2(0, 0);
-            this.velocity = new Vector2(0, 0);
-        }
-
         private void HandleOnEnemyGotHit(Bullet bullet, Enemy enemy)
         {
-            ResetThis();
+            ((Game1)Game).bulletsToRemove.Add(bullet);
         }
     }
 }

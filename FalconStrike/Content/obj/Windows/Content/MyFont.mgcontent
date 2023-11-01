@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/File.spritefont</SourceFile>
-  <SourceTime>2023-11-01T12:48:03.4172891+08:00</SourceTime>
-  <DestFile>C:/Users/220280643/Documents/GitHub/FalconStrike/FalconStrike/Content/bin/Windows/Content/MyFont.xnb</DestFile>
-  <DestTime>2023-11-01T12:55:54.2649709+08:00</DestTime>
+  <SourceFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/File.spritefont</SourceFile>
+  <SourceTime>2023-11-01T20:27:17.3515226+08:00</SourceTime>
+  <DestFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/bin/Windows/Content/MyFont.xnb</DestFile>
+  <DestTime>2023-11-01T20:29:56.1372863+08:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
