@@ -73,11 +73,6 @@ C:\Users\cwitstudent\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\Fa
 C:\Users\cwitstudent\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\FalconStrike.csproj.CopyComplete
 C:\Users\cwitstudent\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\FalconStrike.exe
 C:\Users\cwitstudent\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\FalconStrike.pdb
-C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Bullet.xnb
-C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Enemy.xnb
-C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Explode.xnb
-C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Player.xnb
-C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Water.xnb
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\FalconStrike.exe
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\FalconStrike.pdb
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\MonoGame.Framework.dll
@@ -109,3 +104,11 @@ C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\C
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Water.xnb
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\MyFont.xnb
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Base.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Base.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Bullet.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Desert.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Explode.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Player.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Water.xnb
+C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\MyFont.xnb

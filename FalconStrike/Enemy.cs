@@ -15,7 +15,6 @@ namespace FalconStrike
             this.random = game1.random;
             game1.OnPlayerGotHit += HandleOnPlayerGotHit;
             game1.OnEnemyGotHit += HandleOnEnemyGotHit;
-            velocity = new Vector2(0, this.random.Next(1000, 2000) / 10f);
         }
 
         protected override void LoadContent()
@@ -34,19 +33,19 @@ namespace FalconStrike
                 position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (position.Y > GraphicsDevice.Viewport.Height)
                 {
-                    SetInitialPosition();
+                    SetActivate();
                 }
 
                 UpdateFrame(gameTime);
             }
-
             base.Update(gameTime);
         }
 
-        public void SetInitialPosition()
+        public void SetActivate()
         {
-            position = new Vector2(random.Next(GraphicsDevice.Viewport.Width - texture.Width / 2) + texture.Width / 4,
-                -texture.Height / 2);
+            isActivate = true;
+            position = new Vector2(random.Next(GraphicsDevice.Viewport.Width - texture.Width / 2) + texture.Width / 4, -texture.Height / 2);
+            velocity = new Vector2(0, this.random.Next(1000, 2000) / 10f);
         }
 
         private void HandleOnPlayerGotHit(Enemy enemy)

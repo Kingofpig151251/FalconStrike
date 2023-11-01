@@ -18,7 +18,7 @@ namespace FalconStrike
         public int score = 0, timer = 30;
 
         private Player player;
-        private Enemy[] enemies = new Enemy[15];
+        public Enemy[] enemies = new Enemy[15];
         public Bullet[] bullets = new Bullet[20];
         private KeyboardState previousState;
         private double elapsedTime = 0;
@@ -53,14 +53,16 @@ namespace FalconStrike
             font = Content.Load<SpriteFont>("MyFont");
             player = new Player(this, this);
             Components.Add(player);
-            foreach (var enemy in enemies)
-            {
-                Components.Add(enemy);
-            }
 
-            foreach (var bullet in bullets)
+            for (int i = 0; i < enemies.Length; i++)
             {
-                Components.Add(bullet);
+                enemies[i]= new Enemy(this, this);
+                Components.Add(enemies[i]);
+            }
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                bullets[i]= new Bullet(this, this,player);
+                Components.Add(bullets[i]);
             }
 
             base.Initialize();
@@ -90,6 +92,9 @@ namespace FalconStrike
 
             previousState = Keyboard.GetState();
 
+            if (random.Next() * 100 < 30)
+            {
+            }
             if (!isPaused)
             {
                 if (random.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 0.5)
