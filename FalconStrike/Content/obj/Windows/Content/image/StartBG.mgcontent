@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/King/Downloads/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike/Content/image/StartBG.png</SourceFile>
+  <SourceTime>2023-11-02T20:29:16.4274581+08:00</SourceTime>
+  <DestFile>C:/Users/King/Downloads/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike/Content/bin/Windows/Content/image/StartBG.xnb</DestFile>
+  <DestTime>2023-11-02T20:30:55.5654355+08:00</DestTime>
+  <Importer>TextureImporter</Importer>
+  <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
+  <Processor>TextureProcessor</Processor>
+  <ProcessorTime>2018-09-24T05:55:52+08:00</ProcessorTime>
+  <Parameters>
+    <Key>ColorKeyColor</Key>
+    <Value>255,0,255,255</Value>
+  </Parameters>
+  <Parameters>
+    <Key>ColorKeyEnabled</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>GenerateMipmaps</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>ResizeToPowerOfTwo</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>MakeSquare</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Color</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

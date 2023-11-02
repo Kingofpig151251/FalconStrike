@@ -11,11 +11,15 @@ namespace FalconStrike
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private SpriteFont font;
+        private Texture2D bgTexture;
 
         public Random random = new Random();
-        public bool isPaused = false, isGameOver = false;
+        public bool isPaused = true, isGameOver = false;
         private ScrollingBackground scrollingBackground;
-        public int score = 0, timer = 30;
+        public int score = 0, timer = 30, level = 0;
+
+        int lineHeight = 20;
+        int baseLine;
 
         private Player player;
         private HashSet<Enemy> enemies = new HashSet<Enemy>();
@@ -27,7 +31,7 @@ namespace FalconStrike
 
         public event Action<Enemy> OnPlayerGotHit;
         public event Action<Bullet, Enemy> OnEnemyGotHit;
-        public event Action OnTimeDown;
+        public event Action<int> OnTimeDown;
 
         public Game1()
         {
@@ -36,10 +40,22 @@ namespace FalconStrike
                 score += 100;
                 CheckScore();
             };
-            OnTimeDown += () =>
+            OnTimeDown += (level) =>
             {
-                timer = 30;
-                score += 500;
+                if (this.level < 4)
+                {
+                    this.level++;
+                    timer = 30;
+                    score += 500;
+                }
+                else
+                {
+                    this.level = 0;
+                    timer = 30;
+                    score = 0;
+                    isPaused = true;
+                }
+
                 CheckScore();
             };
             graphics = new GraphicsDeviceManager(this);
@@ -51,6 +67,7 @@ namespace FalconStrike
         protected override void Initialize()
         {
             scrollingBackground = new ScrollingBackground(this, this, spriteBatch);
+            baseLine = GraphicsDevice.Viewport.Height / 20;
             Components.Add(scrollingBackground);
             font = Content.Load<SpriteFont>("MyFont");
             player = new Player(this, this);
@@ -70,21 +87,42 @@ namespace FalconStrike
 
         protected override void Update(GameTime gameTime)
         {
+            KeyboardState currentState = Keyboard.GetState();
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-
-            if (Keyboard.GetState().IsKeyDown(Keys.P) && previousState.IsKeyUp(Keys.P))
+            if (level == 0)
             {
-                isPaused = !isPaused;
+                isPaused = true;
             }
+
+
+            if (currentState.IsKeyDown(Keys.P) && previousState.IsKeyUp(Keys.P))
+            {
+                if (isGameOver)
+                {
+                    level = 0;
+                    isGameOver = false;
+                }
+                else if (level == 0)
+                {
+                    level++;
+                    isPaused = !isPaused;
+                }
+                else
+                {
+                    isPaused = !isPaused;
+                }
+            }
+
 
             previousState = Keyboard.GetState();
 
             if (!isPaused)
             {
-                if (random.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 0.5)
+                if (random.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 0.5 && level != 4)
                 {
                     AddEnemy();
                 }
@@ -127,28 +165,29 @@ namespace FalconStrike
                         CheckTime(gameTime);
                     }
                 }
-
-                base.Update(gameTime);
             }
+
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(gameTime);
             spriteBatch.Begin();
-            int lineHeight = 20;
-            int baseLine = GraphicsDevice.Viewport.Height / 20;
-            spriteBatch.DrawString(font, "Score: " + score, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine), Color.Red);
-            spriteBatch.DrawString(font, "Time: " + timer, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight), Color.Red);
-            spriteBatch.DrawString(font, "Life:" + player.life, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 2), Color.Red);
-            spriteBatch.DrawString(font, "Fire Rate: " + (10 - Math.Round(player.bulletInterval, 1) * 10), new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 3), Color.Red);
+            // if (level != 0)
+            {
+                spriteBatch.DrawString(font, "Score: " + level, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine), Color.Red);
+                spriteBatch.DrawString(font, "Time: " + timer, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight), Color.Red);
+                spriteBatch.DrawString(font, "Life:" + player.life, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 2), Color.Red);
+                spriteBatch.DrawString(font, "Fire Rate: " + (10 - Math.Round(player.bulletInterval, 1) * 10), new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 3), Color.Red);
+            }
 
             if (isGameOver) spriteBatch.DrawString(font, "Game Over", new Vector2(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2), Color.Red);
             if (isPaused)
             {
                 string text1 = "Next Level!";
                 string text2 = "Press P to Play";
+
 
                 Vector2 text1Size = font.MeasureString(text1);
                 Vector2 text2Size = font.MeasureString(text2);
@@ -168,8 +207,8 @@ namespace FalconStrike
             timer--;
             if (timer <= 0)
             {
+                OnTimeDown?.Invoke(this.level);
                 isPaused = true;
-                OnTimeDown?.Invoke();
             }
         }
 
