@@ -133,6 +133,7 @@ namespace FalconStrike
                     {
                         if (bullet.CollidesWith(enemy) && enemy.position.Y > enemy.texture.Height)
                         {
+                            AddEnemy();
                             OnEnemyGotHit?.Invoke(bullet, enemy);
                             bulletsToRemove.Add(bullet);
                         }

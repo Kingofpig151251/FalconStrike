@@ -103,7 +103,6 @@ C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\Falc
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\obj\x86\Debug\FalconStrike.pdb
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Bullet.xnb
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Desert.xnb
-C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy.xnb
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Explode.xnb
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Player.xnb
 C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Water.xnb
@@ -145,3 +144,9 @@ C:\Users\King\Downloads\FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8\Fa
 C:\Users\King\Downloads\FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8\FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy4.xnb
 C:\Users\King\Downloads\FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8\FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy3.xnb
 C:\Users\King\Downloads\FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8\FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8\FalconStrike\bin\Windows\x86\Debug\Content\image\StartBG.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy4.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy0.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy1.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy2.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Enemy3.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\StartBG.xnb

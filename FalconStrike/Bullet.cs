@@ -43,7 +43,7 @@ namespace FalconStrike
 
         private void HandleOnEnemyGotHit(Bullet bullet, Enemy enemy)
         {
-            ((Game1)Game).bulletsToRemove.Add(bullet);
+                ((Game1)Game).bulletsToRemove.Add(bullet);
         }
     }
 }
