@@ -27,7 +27,7 @@ namespace FalconStrike
             textures[1] = Game.Content.Load<Texture2D>("image\\Enemy1");
             textures[2] = Game.Content.Load<Texture2D>("image\\Enemy2");
             textures[3] = Game.Content.Load<Texture2D>("image\\Enemy3");
-            texture = textures[random.Next(maxTexture)];
+            texture = textures[random.Next(4)];
             frameBounds = new Rectangle(0, 0, texture.Width / totalFrames, texture.Height);
             colorData = new Color[texture.Width * texture.Height];
             texture.GetData(colorData);
@@ -78,17 +78,17 @@ namespace FalconStrike
                 case 1:
                     maxTexture = 2;
                     speed = 1000;
-                    base.LoadContent();
+                    LoadContent();
                     break;
                 case 2:
                     maxTexture = 3;
                     speed = 1500;
-                    base.LoadContent();
+                    LoadContent();
                     break;
                 case 3:
                     maxTexture = 4;
                     speed = 2000;
-                    base.LoadContent();
+                    LoadContent();
                     break;
             }
         }

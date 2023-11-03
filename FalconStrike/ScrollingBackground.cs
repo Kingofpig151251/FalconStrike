@@ -7,7 +7,7 @@ namespace FalconStrike
     {
         private SpriteBatch spriteBatch;
         private Texture2D[] texture = new Texture2D[3];
-        public int textureindex = 2;
+        public int textureindex = 0;
         private Vector2[,] positions;
         private const int speed = 1;
         private float transitionAlpha;
@@ -82,7 +82,14 @@ namespace FalconStrike
 
         private void ChangeTexture(int level)
         {
-            textureindex = game1.random.Next(texture.Length);
+            if (textureindex<3)
+            {
+                textureindex++;
+            }
+            else
+            {
+                textureindex = 0;
+            }
             transitionAlpha = 0;
         }
     }

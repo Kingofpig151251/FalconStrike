@@ -22,7 +22,7 @@ namespace FalconStrike
         int baseLine;
 
         private Player player;
-        private HashSet<Enemy> enemies = new HashSet<Enemy>();
+        public HashSet<Enemy> enemies = new HashSet<Enemy>();
         public HashSet<Enemy> enemiesToRemove = new HashSet<Enemy>();
         public HashSet<Bullet> bullets = new HashSet<Bullet>();
         public HashSet<Bullet> bulletsToRemove = new HashSet<Bullet>();
@@ -122,7 +122,7 @@ namespace FalconStrike
 
             if (!isPaused)
             {
-                if (random.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 0.5 && level != 4)
+                if (random.NextDouble() < gameTime.ElapsedGameTime.TotalSeconds * 0.5)
                 {
                     AddEnemy();
                 }
@@ -133,7 +133,6 @@ namespace FalconStrike
                     {
                         if (bullet.CollidesWith(enemy) && enemy.position.Y > enemy.texture.Height)
                         {
-                            AddEnemy();
                             OnEnemyGotHit?.Invoke(bullet, enemy);
                             bulletsToRemove.Add(bullet);
                         }
@@ -177,7 +176,7 @@ namespace FalconStrike
             spriteBatch.Begin();
             // if (level != 0)
             {
-                spriteBatch.DrawString(font, "Score: " + level, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine), Color.Red);
+                spriteBatch.DrawString(font, "Score: " + score, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine), Color.Red);
                 spriteBatch.DrawString(font, "Time: " + timer, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight), Color.Red);
                 spriteBatch.DrawString(font, "Life:" + player.life, new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 2), Color.Red);
                 spriteBatch.DrawString(font, "Fire Rate: " + (10 - Math.Round(player.bulletInterval, 1) * 10), new Vector2(GraphicsDevice.Viewport.Width / 20, baseLine + lineHeight * 3), Color.Red);

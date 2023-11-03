@@ -30,11 +30,21 @@ namespace FalconStrike
             if (!game1.isPaused)
             {
                 position.Y -= velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (this.position.Y - texture.Height / 2 < 0)
+                if (position.Y - texture.Height / 2 < 0)
                 {
                     Game.Components.Remove(this);
-                    return;
                 }
+
+                foreach (var enemy in game1.enemies)
+                {
+                    if (this.CollidesWith(enemy))
+                    {
+                        game1.enemiesToRemove.Add(enemy);
+                    }
+                    
+                }
+                
+                
                 UpdateFrame(gameTime);
             }
 
