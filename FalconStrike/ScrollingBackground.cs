@@ -82,7 +82,7 @@ namespace FalconStrike
 
         private void ChangeTexture(int level)
         {
-            if (textureindex<3)
+            if (textureindex<2)
             {
                 textureindex++;
             }
