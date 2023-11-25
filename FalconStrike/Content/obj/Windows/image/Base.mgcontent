@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/King/Downloads/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike/Content/image/Base.png</SourceFile>
+  <SourceFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Base.png</SourceFile>
   <SourceTime>2023-11-02T19:49:28.0588181+08:00</SourceTime>
-  <DestFile>C:/Users/King/Downloads/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike-8c28e8b5cab4dea744297576e84db1797e6d0ad8/FalconStrike/Content/bin/Windows/image/Base.xnb</DestFile>
-  <DestTime>2023-11-02T20:29:29.7668943+08:00</DestTime>
+  <DestFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/bin/Windows/image/Base.xnb</DestFile>
+  <DestTime>2023-11-20T22:18:29.066174+08:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

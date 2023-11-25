@@ -158,3 +158,6 @@ C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\De
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\StartBG.xnb
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\image\Water.xnb
 C:\Users\220280643\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\MyFont.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\Explosion.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\BGM.xnb
+C:\Users\King\Documents\GitHub\FalconStrike\FalconStrike\bin\Windows\x86\Debug\Content\BGM.wma

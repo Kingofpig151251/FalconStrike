@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace FalconStrike
 {
@@ -22,15 +24,17 @@ namespace FalconStrike
         int baseLine;
 
         private Player player;
-        public HashSet<Enemy0> enemies = new HashSet<Enemy0>();
-        public HashSet<Enemy0> enemiesToRemove = new HashSet<Enemy0>();
+        public HashSet<Enemy> enemies = new HashSet<Enemy>();
+        public HashSet<Enemy> enemiesToRemove = new HashSet<Enemy>();
         public HashSet<Bullet> bullets = new HashSet<Bullet>();
         public HashSet<Bullet> bulletsToRemove = new HashSet<Bullet>();
+        private SoundEffect explosionSound;
+        private Song BGM;
         private KeyboardState previousState;
         private double elapsedTime = 0;
 
-        public event Action<Enemy0> OnPlayerGotHit;
-        public event Action<Bullet, Enemy0> OnEnemyGotHit;
+        public event Action<Enemy> OnPlayerGotHit;
+        public event Action<Bullet, Enemy> OnEnemyGotHit;
         public event Action<int> OnTimeDown;
 
         public Game1()
@@ -42,19 +46,16 @@ namespace FalconStrike
             };
             OnTimeDown += (level) =>
             {
+                this.level++;
                 if (this.level < 4)
                 {
-                    this.level++;
                     timer = 30;
                     score += 500;
                 }
                 else
                 {
-                    this.level = 0;
-                    timer = 30;
-                    score = 0;
-                    isPaused = true;
                     isWin = true;
+                    isPaused = true;
                 }
 
                 CheckScore();
@@ -80,6 +81,10 @@ namespace FalconStrike
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Services.AddService(typeof(SpriteBatch), spriteBatch);
+            explosionSound = Content.Load<SoundEffect>("Explosion");
+            BGM = Content.Load<Song>("BGM");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(BGM);
         }
 
         protected override void UnloadContent()
@@ -102,12 +107,9 @@ namespace FalconStrike
 
             if (currentState.IsKeyDown(Keys.P) && previousState.IsKeyUp(Keys.P))
             {
-                if (isGameOver)
+                if (isGameOver || isWin)
                 {
-                    level = 0;
-                    OnTimeDown?.Invoke(this.level);
-                    isGameOver = false;
-                    Components.Add(player);
+                    Exit();
                 }
                 else if (level == 0)
                 {
@@ -137,6 +139,7 @@ namespace FalconStrike
                         if (bullet.CollidesWith(enemy) && enemy.position.Y > enemy.texture.Height)
                         {
                             OnEnemyGotHit?.Invoke(bullet, enemy);
+                            explosionSound.Play();
                             bulletsToRemove.Add(bullet);
                             break;
                         }
@@ -145,6 +148,7 @@ namespace FalconStrike
                     if (player.CollidesWith(enemy) && player.isInvincible == false)
                     {
                         OnPlayerGotHit?.Invoke(enemy);
+                        explosionSound.Play();
                     }
                 }
 
@@ -194,13 +198,15 @@ namespace FalconStrike
                 if (isGameOver)
                 {
                     text1 = "Game Over!";
+                    text2 = "Press P to Exit";
                 }
                 else if (isWin)
                 {
                     text1 = "You Win!!!";
+                    text2 = "Press P to Exit";
                 }
                 else if (level == 0 && !isWin)
-                {   
+                {
                     text1 = "FalconStrike";
                 }
                 else
@@ -233,7 +239,7 @@ namespace FalconStrike
                 }
 
                 OnTimeDown?.Invoke(this.level);
-                
+
                 isPaused = true;
             }
         }
@@ -248,7 +254,21 @@ namespace FalconStrike
 
         private void AddEnemy()
         {
-            var enemy = new Enemy0(this, this);
+            int enemyType = 0;
+            switch (level)
+            {
+                case 1:
+                    enemyType = random.Next(0, 2);
+                    break;
+                case 2:
+                    enemyType = random.Next(2, 4);
+                    break;
+                case 3:
+                    enemyType = random.Next(0, 3);
+                    break;
+            }
+
+            var enemy = new Enemy(this, this, enemyType);
             Components.Add(enemy);
             enemy.SetInitialPosition();
             enemies.Add(enemy);
@@ -257,6 +277,7 @@ namespace FalconStrike
         public void GameOver()
         {
             isGameOver = true;
+            isPaused = true;
             Components.Remove(player);
         }
     }

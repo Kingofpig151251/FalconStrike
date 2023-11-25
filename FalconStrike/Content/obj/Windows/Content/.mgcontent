@@ -4,6 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/BGM.mp3</File>
+    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/Explosion.wav</File>
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/File.spritefont</File>
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Base.png</File>
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Bullet.png</File>
@@ -18,6 +20,8 @@
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Water.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>MyFont.spritefont</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />

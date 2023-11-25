@@ -51,7 +51,7 @@ namespace FalconStrike
             base.Update(gameTime);
         }
 
-        private void HandleOnEnemyGotHit(Bullet bullet, Enemy0 enemy0)
+        private void HandleOnEnemyGotHit(Bullet bullet, Enemy enemy)
         {
                 ((Game1)Game).bulletsToRemove.Add(bullet);
         }
