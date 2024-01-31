@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Bullet.png</SourceFile>
-  <SourceTime>2023-11-02T19:49:28.0657948+08:00</SourceTime>
+  <SourceTime>2023-11-26T15:39:50.0585696+08:00</SourceTime>
   <DestFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/bin/Windows/Content/image/Bullet.xnb</DestFile>
-  <DestTime>2023-11-03T21:38:48.4290332+08:00</DestTime>
+  <DestTime>2023-11-26T16:52:34.5721037+08:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

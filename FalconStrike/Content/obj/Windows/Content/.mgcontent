@@ -16,14 +16,12 @@
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Enemy3.png</File>
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Explode.png</File>
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Player.png</File>
-    <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/StartBG.png</File>
     <File>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Water.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>MyFont.spritefont</File>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

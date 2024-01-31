@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/image/Enemy3.png</SourceFile>
-  <SourceTime>2023-11-02T19:57:15.9620411+08:00</SourceTime>
+  <SourceTime>2023-11-26T15:39:50.0595695+08:00</SourceTime>
   <DestFile>C:/Users/King/Documents/GitHub/FalconStrike/FalconStrike/Content/bin/Windows/Content/image/Enemy3.xnb</DestFile>
-  <DestTime>2023-11-03T21:38:48.4350131+08:00</DestTime>
+  <DestTime>2023-11-26T16:52:34.5950268+08:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-09-24T05:55:52+08:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
